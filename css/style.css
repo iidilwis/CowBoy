@@ -1,0 +1,470 @@
+@charset "UTF-8";
+/* Универсальная box-модель. При border-box заданная ширина/высота элемента уже включает padding и border.Это делает расчёт размеров гораздо предсказуемее.*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем стандартные margin и padding браузера. Отступы будем задавать самостоятельно.*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Не позволяем мобильным браузерам самостоятельно увеличивать размер текста при повороте экрана.*/
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+       text-size-adjust: 100%;
+}
+
+/* Страница как минимум занимает всю высоту viewport.*/
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/*Заголовки сохраняют семантику h1–h6, но браузерные размеры и жирность сбрасываются. Внешний вид заголовков задаём самостоятельно.*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.1;
+}
+
+/* Если встретится длинный URL или другая неразрывная строка, она не должна вылезать за пределы контейнера.*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*  Изображения и другие медиа: display: block убирает лишний зазор снизу, max-width: 100% не позволяет контенту вылезать за пределы родителя.*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Формы по умолчанию могут использовать системный шрифт. Принудительно наследуем шрифт страницы. */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Кнопка должна выглядеть кликабельной.*/
+button {
+  cursor: pointer;
+}
+
+/* Ссылки наследуют цвет родителя вместо стандартного браузерного синего. Подчёркивание намеренно не убираем. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Убираем стандартные маркеры списков. Если они нужны — зададим их отдельно. */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем стандартные промежутки между ячейками таблицы. */
+table {
+  border-collapse: collapse;
+}
+
+/* Fieldset имеет стандартную рамку и padding. Убираем их, чтобы стилизовать самостоятельно.*/
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.wraper {
+  background: #E6DAC0;
+  font-family: Inter;
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+}
+
+.header {
+  background: #E6DAC0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(11px, 1.5vw, 44px) clamp(25px, 3.2vw, 100px);
+  max-height: 172px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  gap: 20px;
+}
+@media (max-width: 576px) {
+  .header {
+    flex-direction: column;
+  }
+  .header .header-logo {
+    display: none;
+  }
+  .header .header-nav__button {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px;
+  }
+}
+.header-logo {
+  max-height: 85px;
+  width: clamp(50px, 13vw, 279px);
+  transition: transform 5s ease;
+}
+.header-logo:hover {
+  transform: scale(0.8) rotate(5040deg);
+}
+
+.header-nav {
+  display: flex;
+  gap: clamp(20px, 2.6vw, 81px);
+  align-items: center;
+}
+.header-nav__header-nav-link {
+  font-size: clamp(16px, 1.02vw, 32px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.header-nav__header-nav-link::after {
+  content: "";
+  display: block;
+  background: #000000;
+  height: 2px;
+  width: 0;
+  transition: width 0.3s ease, filter 0.3s ease;
+}
+.header-nav__header-nav-link:hover::after {
+  width: 100%;
+}
+.header-nav__header-nav-link:active {
+  filter: invert(1);
+}
+.header-nav__button {
+  font-size: clamp(16px, 1.02vw, 32px);
+  font-weight: 400;
+  line-height: 1.42;
+  width: clamp(140px, 10.3vw, 322px);
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(7px, 0.7vw, 19px);
+  border: 1px solid #000000;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: filter 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, transform 0.3s ease;
+}
+.header-nav__button:hover {
+  filter: invert(1);
+  border: 1px solid #E6DAC0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6156862745);
+}
+.header-nav__button:active {
+  transform: scale(0.9);
+}
+
+.home {
+  padding: clamp(50px, 9.9vw, 309px) clamp(25px, 3.2vw, 100px) 0;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    text-align: center;
+  }
+  .home .home-promo {
+    max-width: none;
+  }
+  .home .promo-actions {
+    justify-content: center;
+  }
+}
+@media (max-width: 355px) {
+  .home .promo-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home .promo-actions__promo-button {
+    width: 100%;
+  }
+}
+.home__home-promo {
+  flex: 1;
+  align-self: center;
+}
+.home__home-decor {
+  flex: 1;
+}
+
+.home-promo {
+  max-width: 41%;
+  padding: 0 0 clamp(25px, 3.2vw, 98px);
+}
+.home-promo__promo-title {
+  font-size: clamp(32px, 4.08vw, 128px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.home-promo__promo-text {
+  font-size: clamp(16px, 1.27vw, 40px);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-top: clamp(12px, 0.8vw, 24px);
+}
+.promo-actions {
+  margin-top: clamp(16px, 2vw, 64px);
+  display: flex;
+  gap: 29px;
+}
+.promo-actions__promo-button {
+  font-size: clamp(16px, 1.02vw, 32px);
+  font-weight: 400;
+  line-height: 1.5;
+  width: clamp(140px, 10.3vw, 322px);
+  min-width: 160px;
+  padding: clamp(16px, 1.1vw, 35px);
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 999px;
+  transition: filter 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
+}
+.promo-actions__promo-button:hover {
+  filter: invert(1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6156862745);
+}
+.promo-actions__promo-button:active {
+  transform: scale(0.9);
+}
+.promo-actions__promo-button_black {
+  background: #000000;
+  color: #FFFFFF;
+}
+.promo-actions__promo-button_flat {
+  background: rgba(255, 255, 255, 0.1215686275);
+  backdrop-filter: blur(10px) brightness(1.03);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.home-decor {
+  max-width: 1334px;
+}
+.home-decor__home-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.models {
+  display: flex;
+  min-height: 100vh;
+  max-height: 1900px;
+}
+@media (max-width: 576px) {
+  .models {
+    flex-direction: column;
+    height: 100vh;
+  }
+  .models .model-dark {
+    background-position: left 55%;
+  }
+  .models .model-light {
+    background-position: left center;
+  }
+}
+.models__model-dark {
+  flex-basis: 50%;
+}
+.models__model-light {
+  flex-basis: 50%;
+}
+
+.model-dark {
+  background: url(../img/image.jpg) 25% 55%/cover no-repeat;
+  display: flex;
+  padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 100px);
+}
+
+.model-light {
+  background: url(../img/image-1.jpg) 70% 55%/cover no-repeat;
+  display: flex;
+  padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 99px);
+}
+
+.model-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 85%;
+}
+.model-info__title {
+  color: #FFFFFF;
+  font-size: clamp(32px, 2.1vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.model-info__text {
+  margin-top: clamp(16px, 0.8vw, 24px);
+  color: #FFFFFF;
+  font-size: clamp(16px, 1.2vw, 36px);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.model-info__button {
+  margin-top: clamp(30px, 2vw, 64px);
+  font-size: clamp(16px, 0.9vw, 28px);
+  line-height: 1.5;
+  width: clamp(140px, 10.3vw, 280px);
+  min-width: 160px;
+  padding: clamp(16px, 1.1vw, 30.5px);
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1215686275);
+  backdrop-filter: blur(5px) brightness(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  z-index: 0;
+  transition: filter 0.5s ease, transform 0.3s ease;
+}
+.model-info__button:hover {
+  filter: invert(1);
+}
+.model-info__button:active {
+  transform: scale(0.9);
+}
+.model-info__button_dark {
+  color: #FFFFFF;
+}
+.download {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(30px, 6vw, 171px);
+  min-height: 100vh;
+  max-height: 2201px;
+  padding: 0 clamp(25px, 3.2vw, 100px);
+}
+@media (max-width: 768px) {
+  .download .download-actions__title {
+    max-width: 440px;
+  }
+  .download .download-actions__text {
+    max-width: 500px;
+  }
+}
+@media (max-width: 576px) {
+  .download .download-actions__button {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+.download-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(50px, 15.75vh, 297px) 0 0 0;
+  text-align: center;
+}
+.download-actions__title {
+  font-size: clamp(30px, 3.1vw, 96px);
+  font-weight: 600;
+  line-height: 1.1;
+  max-width: 60%;
+}
+.download-actions__text {
+  margin-top: clamp(16px, 0.8vw, 24px);
+  font-size: clamp(16px, 1.2vw, 36px);
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 45%;
+}
+.download-actions__button {
+  margin-top: clamp(30px, 2vw, 64px);
+  background: #000000;
+  color: #FFFFFF;
+  font-size: clamp(16px, 0.9vw, 28px);
+  font-weight: 400;
+  line-height: 1.5;
+  width: clamp(140px, 10.3vw, 280px);
+  min-width: 160px;
+  padding: clamp(16px, 1.1vw, 30.5px);
+  border-radius: 999px;
+  transition: filter 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
+}
+.download-actions__button:hover {
+  filter: invert(1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6156862745);
+}
+.download-actions__button:active {
+  transform: scale(0.9);
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: 78.5vh;
+}
+.video::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  z-index: -1;
+  background: url(../img/video.png) 0/cover no-repeat;
+  filter: blur(8px);
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 1.5vw, 44px) clamp(25px, 3.2vw, 100px);
+  gap: 20px;
+}
+.footer__logo {
+  width: clamp(100px, 13vw, 279px);
+  position: relative;
+  right: 6px;
+}
+.footer__button {
+  font-size: clamp(16px, 1.02vw, 32px);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(5px, 0.7vw, 19.5px);
+  border: 1px solid #000000;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: filter 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, transform 0.3s ease;
+}
+.footer__button:hover {
+  filter: invert(1);
+  border: 1px solid #E6DAC0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6156862745);
+}
+.footer__button:active {
+  transform: scale(0.9);
+}
