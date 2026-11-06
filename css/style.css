@@ -157,7 +157,7 @@ fieldset {
   background: #000000;
   height: 2px;
   width: 0;
-  transition: width 0.3s ease, filter 0.3s ease;
+  transition: width 0.3s ease, filter 1s ease;
 }
 .header-nav__header-nav-link:hover::after {
   width: 100%;
@@ -287,7 +287,6 @@ fieldset {
 @media (max-width: 576px) {
   .models {
     flex-direction: column;
-    min-height: 100vh;
   }
   .models .model-dark {
     background-position: left 55%;
@@ -306,13 +305,15 @@ fieldset {
 .model-dark {
   background: url(../img/image.jpg) 25% 55%/cover no-repeat;
   display: flex;
-  padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 100px);
+  padding: 0 0 clamp(30px, 12vw, 365px) clamp(25px, 3.2vw, 100px);
+  min-height: 50vh;
 }
 
 .model-light {
   background: url(../img/image-1.jpg) 70% 55%/cover no-repeat;
   display: flex;
-  padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 99px);
+  padding: 0 0 clamp(30px, 12vw, 365px) clamp(25px, 3.2vw, 99px);
+  min-height: 50vh;
 }
 
 .model-info {

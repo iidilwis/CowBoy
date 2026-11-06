@@ -74,7 +74,7 @@ $light-color: #FFFFFF;
 			background: $dark-color;
 			height: 2px;
 			width: 0;
-			transition: width 0.3s ease, filter 0.3s ease;
+			transition: width 0.3s ease, filter 1s ease;
 		}
 
 		&:hover {
@@ -237,9 +237,9 @@ $light-color: #FFFFFF;
 	min-height: 100vh;
 	max-height: 1900px;
 
+
 	@media (max-width: 576px) {
 		flex-direction: column;
-		min-height: 100vh;
 
 		.model-dark {
 			background-position: left 55%;
@@ -262,13 +262,15 @@ $light-color: #FFFFFF;
 .model-dark {
 	background: url(../img/image.jpg) 25% 55%/cover no-repeat;
 	display: flex;
-	padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 100px);
+	padding: 0 0 clamp(30px, 12vw, 365px) clamp(25px, 3.2vw, 100px);
+	min-height: 50vh;
 }
 
 .model-light {
 	background: url(../img/image-1.jpg) 70% 55%/cover no-repeat;
 	display: flex;
-	padding: 0 0 clamp(60px, 12vw, 365px) clamp(25px, 3.2vw, 99px);
+	padding: 0 0 clamp(30px, 12vw, 365px) clamp(25px, 3.2vw, 99px);
+	min-height: 50vh;
 }
 
 
@@ -338,7 +340,6 @@ $light-color: #FFFFFF;
 	min-height: 100vh;
 	max-height: 2201px;
 	padding: 0 clamp(25px, 3.2vw, 100px);
-
 
 	@media (max-width: 768px) {
 		.download-actions__title {
