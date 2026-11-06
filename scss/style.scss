@@ -239,7 +239,7 @@ $light-color: #FFFFFF;
 
 	@media (max-width: 576px) {
 		flex-direction: column;
-		height: 100vh;
+		min-height: 100vh;
 
 		.model-dark {
 			background-position: left 55%;
@@ -338,6 +338,7 @@ $light-color: #FFFFFF;
 	min-height: 100vh;
 	max-height: 2201px;
 	padding: 0 clamp(25px, 3.2vw, 100px);
+
 
 	@media (max-width: 768px) {
 		.download-actions__title {

@@ -17,6 +17,11 @@ html {
 	text-size-adjust: 100%;
 }
 
+/* Убираем стандартную подсветку элементов при касании на мобильных устройствах. */
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
 /* Страница как минимум занимает всю высоту viewport.*/
 body {
 	min-height: 100vh;
