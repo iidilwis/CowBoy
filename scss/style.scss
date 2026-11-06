@@ -66,7 +66,7 @@ $light-color: #FFFFFF;
 		font-size: clamp(16px, 1.02vw, 32px);
 		font-weight: 400;
 		line-height: 1.1;
-
+		transition: filter 300ms ease;
 
 		&::after {
 			content: '';
@@ -74,7 +74,7 @@ $light-color: #FFFFFF;
 			background: $dark-color;
 			height: 2px;
 			width: 0;
-			transition: width 0.3s ease, filter 1s ease;
+			transition: width 0.3s ease;
 		}
 
 		&:hover {
